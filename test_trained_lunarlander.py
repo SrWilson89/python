@@ -7,7 +7,7 @@ import time
 # Ruta al mejor modelo guardado por el script de entrenamiento
 # Asegúrate de que esta ruta es correcta. Por defecto, EvalCallback lo guarda como 'best_model.zip'
 model_path = "./lunarlander_ppo_logs/best_model.zip"
-env_id = "LunarLander-v2"
+env_id = "LunarLander-v3"
 num_episodes_to_test = 5 # Cuántas partidas queremos que la IA juegue de prueba
 
 # --- Código de prueba ---
@@ -44,7 +44,7 @@ else:
             steps += 1 # Incrementar contador de pasos
 
             env.render() # Mostrar la simulación en la ventana de Pygame
-            time.sleep(0.01) # Pequeña pausa para que sea visible
+            time.sleep(0.05) # Pequeña pausa para que sea visible
 
         print(f"Episodio {episode + 1} terminado. Recompensa total: {episode_reward:.2f}, Pasos: {steps}")
 
