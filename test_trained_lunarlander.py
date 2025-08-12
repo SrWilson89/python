@@ -4,7 +4,7 @@ import os
 import time
 
 # --- Configuración de la prueba ---
-# Ruta al mejor modelo guardado por el script de entrenamiento
+# Ruta al mejor modelo guardado por el script de vtrenamiento
 # Asegúrate de que esta ruta es correcta. Por defecto, EvalCallback lo guarda como 'best_model.zip'
 model_path = "./lunarlander_ppo_logs/best_model.zip"
 env_id = "LunarLander-v3"
