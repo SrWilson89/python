@@ -1,0 +1,49 @@
+========================================
+          INFORME FINAL DEL TORNEO
+========================================
+
+Tiempo total del torneo: 04:00 minutos
+
+--- Resultados por victorias ---
+> IAF: 7 victorias
+> IAD: 0 victorias
+> IAA: 0 victorias
+> IAJ: 0 victorias
+> IAC: 0 victorias
+> IAL: 0 victorias
+> IAM: 0 victorias
+> IAR: 0 victorias
+
+--- Progreso de IQ de las IA ---
+> IA: IAD
+  - IQ Inicial del torneo: 625.00
+  - IQ Final del torneo: 685.00
+
+> IA: IAA
+  - IQ Inicial del torneo: -457.00
+  - IQ Final del torneo: -514.00
+
+> IA: IAJ
+  - IQ Inicial del torneo: 1429.00
+  - IQ Final del torneo: 1451.00
+
+> IA: IAF
+  - IQ Inicial del torneo: 2168.00
+  - IQ Final del torneo: 2996.00
+
+> IA: IAC
+  - IQ Inicial del torneo: -45.00
+  - IQ Final del torneo: -90.00
+
+> IA: IAL
+  - IQ Inicial del torneo: 30.00
+  - IQ Final del torneo: 45.00
+
+> IA: IAM
+  - IQ Inicial del torneo: 63.00
+  - IQ Final del torneo: 122.00
+
+> IA: IAR
+  - IQ Inicial del torneo: 305.00
+  - IQ Final del torneo: 305.00
+

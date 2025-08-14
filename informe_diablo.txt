@@ -1,0 +1,61 @@
+========================================
+          INFORME FINAL MODO DIABLO
+========================================
+
+Partida finalizada en la ronda: 3
+Tiempo total de juego: 04:14 minutos
+Ganador del torneo: IAF
+
+--- Resultados por victorias ---
+> IAF: 10 victorias
+> IAJ: 9 victorias
+> IAL: 7 victorias
+> IAR: 7 victorias
+> IAD: 4 victorias
+> IAM: 3 victorias
+> IAC: 2 victorias
+> IAA: 1 victorias
+
+--- Resultados por puntos ---
+> IAF: 32 puntos
+> IAJ: 27 puntos
+> IAR: 23 puntos
+> IAL: 21 puntos
+> IAD: 14 puntos
+> IAM: 9 puntos
+> IAC: 6 puntos
+> IAA: 3 puntos
+
+--- Progreso de IQ de las IA ---
+> IA: IAD
+  - IQ Inicial del torneo: 690.00
+  - IQ Final del torneo: 1040.00
+
+> IA: IAA
+  - IQ Inicial del torneo: -511.00
+  - IQ Final del torneo: -653.00
+
+> IA: IAJ
+  - IQ Inicial del torneo: 1458.00
+  - IQ Final del torneo: 2202.00
+
+> IA: IAF
+  - IQ Inicial del torneo: 3008.00
+  - IQ Final del torneo: 4224.00
+
+> IA: IAC
+  - IQ Inicial del torneo: -90.00
+  - IQ Final del torneo: -280.00
+
+> IA: IAL
+  - IQ Inicial del torneo: 45.00
+  - IQ Final del torneo: 205.00
+
+> IA: IAM
+  - IQ Inicial del torneo: 130.00
+  - IQ Final del torneo: 573.00
+
+> IA: IAR
+  - IQ Inicial del torneo: 305.00
+  - IQ Final del torneo: 555.00
+
