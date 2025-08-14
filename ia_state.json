@@ -1,6 +1,7 @@
 {
     "IAD": {
-        "iq": 67.30839903119086,
+        "iq": 5.33794181218568,
+        "sentimiento": "diversion",
         "velocidad_base": 94.5,
         "frames_per_point": [
             524,
@@ -63,11 +64,12 @@
         "iq_adaptabilidad": 94.4,
         "iq_reaccion": -11.06,
         "iq_control": 100.0,
-        "iq_caos": 48.224423405088224,
-        "iq_imprevisibilidad": 59.30077368848433
+        "iq_caos": -34.72880011101118,
+        "iq_imprevisibilidad": -43.65737445243178
     },
     "IAA": {
-        "iq": 73.37915108142802,
+        "iq": 167.24781986245614,
+        "sentimiento": "concentracion",
         "desorden": 8,
         "final_iq": 360.87,
         "frames_per_point": [
@@ -170,11 +172,12 @@
         "iq_sorpresa": 1505,
         "iq_adaptacion_social": 33.2,
         "iq_intuicion": 165.9,
-        "iq_prediccion": 82.18385764232704,
-        "iq_precision": 64.574444520529
+        "iq_prediccion": 178.2611214755454,
+        "iq_precision": 156.23451824936691
     },
     "IAJ": {
-        "iq": 85.34081981044937,
+        "iq": 1313.3408198104494,
+        "sentimiento": "determinacion",
         "velocidad_actual": 25,
         "paddle_height": 200,
         "crecimiento": 36,
@@ -239,12 +242,12 @@
         "iq_adaptacion": 125.0,
         "iq_venganza": 0,
         "iq_precision": 76.66,
-        "sentimiento": "frustraci\u00f3n y sed de venganza",
-        "iq_emocional": 97.35560888032215,
-        "iq_motivacion": 73.32603074057661
+        "iq_emocional": 1730.355608880322,
+        "iq_motivacion": 896.3260307405766
     },
     "IAF": {
-        "iq": 80.41180135126874,
+        "iq": 140.2332558486118,
+        "sentimiento": "fluidez",
         "speed": 17.599999999999966,
         "final_iq": 124.32,
         "frames_per_point": [
@@ -304,29 +307,33 @@
         ],
         "iq_precision": 47.3,
         "iq_velocidad_reaccion": 251.33,
-        "iq_coordinacion": 107.57908742158348,
+        "iq_coordinacion": 162.03936212892955,
         "iq_control": 100.0,
-        "iq_estrategia": 53.244515280953976
+        "iq_estrategia": 118.42714956829406
     },
     "IAC": {
-        "iq": 65.30593208573109,
-        "iq_cautela": 72.71674825460467,
-        "iq_paciencia": 57.8951159168575
+        "iq": -52.31867694413616,
+        "sentimiento": "calma",
+        "iq_cautela": -43.57149150398554,
+        "iq_paciencia": -61.06586238428677
     },
     "IAL": {
-        "iq": 80.803170011866,
-        "iq_analisis": 82.30744377148713,
-        "iq_logica": 79.29889625224487
+        "iq": 10.870288192582752,
+        "sentimiento": "analisis continuo",
+        "iq_analisis": 18.396324433743168,
+        "iq_logica": 3.3442519514223354
     },
     "IAM": {
-        "iq": 70.35959536859932,
-        "iq_reactividad": 62.986205457854105,
-        "iq_constancia": 77.73298527934452
+        "iq": 94.08166716139999,
+        "sentimiento": "fluidez constante",
+        "iq_reactividad": 92.4659662164119,
+        "iq_constancia": 95.69736810638808
     },
     "IAR": {
-        "iq": 72.13945151021403,
-        "iq_reaccion": 81.39143951425795,
-        "iq_velocidad": 60.544994994554926,
-        "iq_agresividad": 74.48192002182921
+        "iq": 406.55181071109996,
+        "sentimiento": "impulsividad",
+        "iq_reaccion": 417.90733622781914,
+        "iq_velocidad": 384.625296102403,
+        "iq_agresividad": 417.1227998030777
     }
 }

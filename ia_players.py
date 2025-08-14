@@ -13,8 +13,7 @@ class IA:
     def __init__(self, screen_height, paddle_height, initial_state=None):
         self.screen_height = screen_height
         self.paddle_height = paddle_height
-        self.frames_per_point = []
-        self.state = {"iq": 0.0}
+        self.state = {"iq": 0.0, "sentimiento": "neutral"}
         self.initial_iq = 0.0
         self.final_iq = 0.0
         self.screen_width = 800
@@ -22,10 +21,7 @@ class IA:
             self.state.update(initial_state)
 
     def move(self, ball_y, paddle_y):
-        raise NotImplementedError("Este método debe ser implementado por las subclases")
-
-    def register_point(self, frames):
-        self.frames_per_point.append(frames)
+        raise NotImplementedError("Este metodo debe ser implementado por las subclases")
 
     def get_iq(self):
         """
@@ -35,16 +31,11 @@ class IA:
 
     def get_experience(self, final_score):
         """
-        Calcula y registra la experiencia de la IA, actualizando su IQ.
+        Calcula y registra la experiencia de la IA, actualizando su IQ y sentimiento.
         """
-        if final_score == 1:
-            self.state["iq"] += random.uniform(1.0, 5.0)
-        elif final_score == -1:
-            self.state["iq"] -= random.uniform(1.0, 5.0)
-        
+        # La logica de actualizacion de IQ y sentimiento se maneja en cada subclase
         experience = {
             "final_score": final_score,
-            "average_frames_per_point": np.mean(self.frames_per_point) if self.frames_per_point else 0,
             "state": self.state
         }
         return experience
@@ -64,10 +55,10 @@ class IAD(IA):
         self.move_direction = 0
         self.move_change_frame = 0
         
-        # Nuevas métricas para IAD
         self.state["iq_caos"] = initial_state.get("iq_caos", random.uniform(50.0, 100.0))
         self.state["iq_imprevisibilidad"] = initial_state.get("iq_imprevisibilidad", random.uniform(50.0, 100.0))
         self.state["iq_adaptabilidad"] = initial_state.get("iq_adaptabilidad", random.uniform(50.0, 100.0))
+        self.state["sentimiento"] = initial_state.get("sentimiento", "diversion")
 
     def move(self, ball_y, paddle_y):
         if self.move_change_frame >= 30:
@@ -84,33 +75,34 @@ class IAD(IA):
         return self.move_direction
         
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
             self.state["iq_caos"] += random.uniform(1.0, 3.0)
             self.state["iq_imprevisibilidad"] += random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "alegria caotica"
         elif final_score == -1:
             self.state["iq_caos"] -= random.uniform(1.0, 3.0)
             self.state["iq_imprevisibilidad"] -= random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "frustracion"
+        else:
+            self.state["sentimiento"] = "diversion"
 
-        # El IQ total es un promedio ponderado de sus métricas
         self.state["iq"] = (self.state["iq_caos"] + self.state["iq_imprevisibilidad"] + self.state["iq_adaptabilidad"]) / 3
         
-        return experience
+        return {"final_score": final_score, "state": self.state}
 
 # Implementación de IAA (Adivina)
 class IAA(IA):
     """
-    IA Adivina: Intenta predecir la posición de la bola.
+    IA Adivina: Intenta predecir la posicion de la bola.
     """
     def __init__(self, screen_height, paddle_height, initial_state=None):
         super().__init__(screen_height, paddle_height, initial_state)
         self.velocidad_base = 7
         self.state["iq"] = initial_state.get("iq", 0.0) if initial_state else 0.0
         
-        # Nuevas métricas para IAA
         self.state["iq_prediccion"] = initial_state.get("iq_prediccion", random.uniform(50.0, 100.0))
         self.state["iq_precision"] = initial_state.get("iq_precision", random.uniform(50.0, 100.0))
+        self.state["sentimiento"] = initial_state.get("sentimiento", "concentracion")
 
     def move(self, ball_y, paddle_y, ball_x, ball_speed_x, ball_speed_y):
         if ball_speed_x < 0:
@@ -125,31 +117,32 @@ class IAA(IA):
         return 0
 
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
             self.state["iq_prediccion"] += random.uniform(2.0, 5.0)
             self.state["iq_precision"] += random.uniform(2.0, 5.0)
+            self.state["sentimiento"] = "satisfaccion"
         elif final_score == -1:
             self.state["iq_prediccion"] -= random.uniform(1.0, 3.0)
             self.state["iq_precision"] -= random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "decepcion"
+        else:
+            self.state["sentimiento"] = "concentracion"
         
         self.state["iq"] = (self.state["iq_prediccion"] + self.state["iq_precision"]) / 2
         
-        return experience
+        return {"final_score": final_score, "state": self.state}
 
 # Implementación de IAJ (Jugadora)
 class IAJ(IA):
     """
-    IA Jugadora: Se enfoca en la sensación del juego.
+    IA Jugadora: Se enfoca en la sensacion del juego.
     """
     def __init__(self, screen_height, paddle_height, initial_state=None):
         super().__init__(screen_height, paddle_height, initial_state)
-        self.velocidad_base = 6
-        self.state["sentimiento"] = "frustración y sed de venganza"
+        self.velocidad_base = 30
+        self.state["sentimiento"] = initial_state.get("sentimiento", "frustracion y sed de venganza")
         self.state["iq"] = initial_state.get("iq", 0.0) if initial_state else 0.0
         
-        # Nuevas métricas para IAJ
         self.state["iq_emocional"] = initial_state.get("iq_emocional", random.uniform(50.0, 100.0))
         self.state["iq_motivacion"] = initial_state.get("iq_motivacion", random.uniform(50.0, 100.0))
 
@@ -162,66 +155,87 @@ class IAJ(IA):
         return 0
 
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
-            self.state["sentimiento"] = "sentimiento de victoria y poder absoluto"
+            self.state["sentimiento"] = "victoria y poder absoluto"
             self.state["iq_emocional"] += random.randint(10, 20)
             self.state["iq_motivacion"] += random.randint(5, 10)
         elif final_score == -1:
-            self.state["sentimiento"] = "frustración y sed de venganza"
+            self.state["sentimiento"] = "frustracion y sed de venganza"
             self.state["iq_emocional"] -= random.randint(5, 10)
             self.state["iq_motivacion"] -= random.randint(1, 5)
+        else:
+            self.state["sentimiento"] = "determinacion"
 
         self.state["iq"] = (self.state["iq_emocional"] + self.state["iq_motivacion"]) / 2
         
-        return experience
+        return {"final_score": final_score, "state": self.state}
 
 # Implementación de IAF (Flotadora)
 class IAF(IA):
     """
-    IA Flotadora: Utiliza múltiples paletas.
+    IA Flotadora: Utiliza multiples paletas.
     """
     def __init__(self, screen_height, initial_state=None):
-        super().__init__(screen_height, 20, initial_state)
+        super().__init__(screen_height, 50, initial_state) # Asignamos un alto fijo para las paletas de IAF
         self.velocidad_base = 3
         self.num_paddles = 5
         self.paddles = [random.randint(0, screen_height - self.paddle_height) for _ in range(self.num_paddles)]
+        self.paddle_spacing = 30 # Distancia entre las paletas
         self.state["iq"] = initial_state.get("iq", 0.0) if initial_state else 0.0
         
-        # Nuevas métricas para IAF
         self.state["iq_coordinacion"] = initial_state.get("iq_coordinacion", random.uniform(50.0, 100.0))
         self.state["iq_estrategia"] = initial_state.get("iq_estrategia", random.uniform(50.0, 100.0))
+        self.state["sentimiento"] = initial_state.get("sentimiento", "fluidez")
 
     def move(self, ball_y, paddles_y):
         movement = [0] * self.num_paddles
-        target_paddle_index = np.argmin([abs((y + self.paddle_height/2) - ball_y) for y in paddles_y])
         
-        if ball_y > paddles_y[target_paddle_index] + self.paddle_height/2:
-            movement[target_paddle_index] = self.velocidad_base
-        elif ball_y < paddles_y[target_paddle_index] + self.paddle_height/2:
-            movement[target_paddle_index] = -self.velocidad_base
-            
+        # Mueve la paleta central para seguir la bola
+        mid_paddle_y = paddles_y[self.num_paddles // 2]
+        if ball_y > mid_paddle_y + self.paddle_height / 2:
+            movement[self.num_paddles // 2] = self.velocidad_base
+        elif ball_y < mid_paddle_y + self.paddle_height / 2:
+            movement[self.num_paddles // 2] = -self.velocidad_base
+        
+        # Las demas paletas siguen a la paleta central para mantener la distancia
+        for i in range(self.num_paddles):
+            if i < self.num_paddles // 2:
+                # Paletas de arriba
+                target_y = paddles_y[i + 1] - self.paddle_spacing - self.paddle_height
+                if paddles_y[i] < target_y:
+                    movement[i] = self.velocidad_base
+                elif paddles_y[i] > target_y:
+                    movement[i] = -self.velocidad_base
+            elif i > self.num_paddles // 2:
+                # Paletas de abajo
+                target_y = paddles_y[i - 1] + self.paddle_spacing + self.paddle_height
+                if paddles_y[i] < target_y:
+                    movement[i] = self.velocidad_base
+                elif paddles_y[i] > target_y:
+                    movement[i] = -self.velocidad_base
+
         return movement
         
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
             self.state["iq_coordinacion"] += random.uniform(2.0, 5.0)
             self.state["iq_estrategia"] += random.uniform(2.0, 5.0)
+            self.state["sentimiento"] = "armonia"
         elif final_score == -1:
             self.state["iq_coordinacion"] -= random.uniform(1.0, 3.0)
             self.state["iq_estrategia"] -= random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "desorganizacion"
+        else:
+            self.state["sentimiento"] = "fluidez"
 
         self.state["iq"] = (self.state["iq_coordinacion"] + self.state["iq_estrategia"]) / 2
         
-        return experience
+        return {"final_score": final_score, "state": self.state}
 
 # Implementación de IAC (Cautelin)
 class IAC(IA):
     """
-    IA Cautelin: Juega de forma más pasiva, moviéndose aleatoriamente.
+    IA Cautelin: Juega de forma mas pasiva, moviendose aleatoriamente.
     """
     def __init__(self, screen_height, paddle_height, initial_state=None):
         super().__init__(screen_height, paddle_height, initial_state)
@@ -230,9 +244,9 @@ class IAC(IA):
         self.move_change_frame = 0
         self.state["iq"] = initial_state.get("iq", 0.0) if initial_state else 0.0
 
-        # Nuevas métricas para IAC
         self.state["iq_cautela"] = initial_state.get("iq_cautela", random.uniform(50.0, 100.0))
         self.state["iq_paciencia"] = initial_state.get("iq_paciencia", random.uniform(50.0, 100.0))
+        self.state["sentimiento"] = initial_state.get("sentimiento", "calma")
 
     def move(self, ball_y, paddle_y):
         if self.move_change_frame >= 60:
@@ -244,32 +258,34 @@ class IAC(IA):
         return self.move_direction
     
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
             self.state["iq_cautela"] += random.uniform(1.0, 3.0)
             self.state["iq_paciencia"] += random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "satisfaccion pasiva"
         elif final_score == -1:
             self.state["iq_cautela"] -= random.uniform(1.0, 3.0)
             self.state["iq_paciencia"] -= random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "molestia"
+        else:
+            self.state["sentimiento"] = "calma"
 
         self.state["iq"] = (self.state["iq_cautela"] + self.state["iq_paciencia"]) / 2
         
-        return experience
+        return {"final_score": final_score, "state": self.state}
 
-# Implementación de IAL (Lógico)
+# Implementación de IAL (Logico)
 class IAL(IA):
     """
-    IA Lógico: Calcula dónde va a llegar la pelota.
+    IA Logico: Calcula donde va a llegar la pelota.
     """
     def __init__(self, screen_height, paddle_height, initial_state=None):
         super().__init__(screen_height, paddle_height, initial_state)
         self.velocidad_base = 7
         self.state["iq"] = initial_state.get("iq", 0.0) if initial_state else 0.0
         
-        # Nuevas métricas para IAL
         self.state["iq_analisis"] = initial_state.get("iq_analisis", random.uniform(50.0, 100.0))
         self.state["iq_logica"] = initial_state.get("iq_logica", random.uniform(50.0, 100.0))
+        self.state["sentimiento"] = initial_state.get("sentimiento", "calculo")
         
     def move(self, ball_y, paddle_y, ball_x, ball_speed_x, ball_speed_y):
         if ball_speed_x > 0:
@@ -292,18 +308,20 @@ class IAL(IA):
         return 0
         
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
             self.state["iq_analisis"] += random.uniform(2.0, 5.0)
             self.state["iq_logica"] += random.uniform(2.0, 5.0)
+            self.state["sentimiento"] = "placer intelectual"
         elif final_score == -1:
             self.state["iq_analisis"] -= random.uniform(1.0, 3.0)
             self.state["iq_logica"] -= random.uniform(1.0, 3.0)
-
+            self.state["sentimiento"] = "error en los datos"
+        else:
+            self.state["sentimiento"] = "analisis continuo"
+        
         self.state["iq"] = (self.state["iq_analisis"] + self.state["iq_logica"]) / 2
         
-        return experience
+        return {"final_score": final_score, "state": self.state}
         
 # Implementación de IAM (Movi)
 class IAM(IA):
@@ -315,9 +333,9 @@ class IAM(IA):
         self.velocidad_base = 5
         self.state["iq"] = initial_state.get("iq", 0.0) if initial_state else 0.0
         
-        # Nuevas métricas para IAM
         self.state["iq_reactividad"] = initial_state.get("iq_reactividad", random.uniform(50.0, 100.0))
         self.state["iq_constancia"] = initial_state.get("iq_constancia", random.uniform(50.0, 100.0))
+        self.state["sentimiento"] = initial_state.get("sentimiento", "determinacion")
 
     def move(self, ball_y, paddle_y):
         if ball_y > paddle_y + self.paddle_height/2:
@@ -327,33 +345,35 @@ class IAM(IA):
         return 0
     
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
             self.state["iq_reactividad"] += random.uniform(1.0, 3.0)
             self.state["iq_constancia"] += random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "ritmo optimo"
         elif final_score == -1:
             self.state["iq_reactividad"] -= random.uniform(1.0, 3.0)
             self.state["iq_constancia"] -= random.uniform(1.0, 3.0)
+            self.state["sentimiento"] = "ritmo roto"
+        else:
+            self.state["sentimiento"] = "fluidez constante"
         
         self.state["iq"] = (self.state["iq_reactividad"] + self.state["iq_constancia"]) / 2
         
-        return experience
+        return {"final_score": final_score, "state": self.state}
         
 # Implementación de IAR (Velocidad)
 class IAR(IA):
     """
-    IA de Velocidad: Muy rápida, pero con lógica simple.
+    IA de Velocidad: Muy rapida, pero con logica simple.
     """
     def __init__(self, screen_height, paddle_height, initial_state=None):
         super().__init__(screen_height, paddle_height, initial_state)
         self.velocidad_base = 10
         self.state["iq"] = initial_state.get("iq", 0.0) if initial_state else 0.0
         
-        # Nuevas métricas para IAR
         self.state["iq_reaccion"] = initial_state.get("iq_reaccion", random.uniform(50.0, 100.0))
         self.state["iq_velocidad"] = initial_state.get("iq_velocidad", random.uniform(50.0, 100.0))
         self.state["iq_agresividad"] = initial_state.get("iq_agresividad", random.uniform(50.0, 100.0))
+        self.state["sentimiento"] = initial_state.get("sentimiento", "impulsividad")
 
     def move(self, ball_y, paddle_y):
         if ball_y > paddle_y + self.paddle_height/2:
@@ -363,17 +383,19 @@ class IAR(IA):
         return 0
         
     def get_experience(self, final_score):
-        experience = super().get_experience(final_score)
-        
         if final_score == 1:
             self.state["iq_reaccion"] += random.uniform(5.0, 10.0)
             self.state["iq_velocidad"] += random.uniform(5.0, 10.0)
             self.state["iq_agresividad"] += random.uniform(5.0, 10.0)
+            self.state["sentimiento"] = "euforia"
         elif final_score == -1:
             self.state["iq_reaccion"] -= random.uniform(3.0, 7.0)
             self.state["iq_velocidad"] -= random.uniform(3.0, 7.0)
             self.state["iq_agresividad"] -= random.uniform(3.0, 7.0)
+            self.state["sentimiento"] = "furia"
+        else:
+            self.state["sentimiento"] = "impulsividad"
         
         self.state["iq"] = (self.state["iq_reaccion"] + self.state["iq_velocidad"] + self.state["iq_agresividad"]) / 3
             
-        return experience
+        return {"final_score": final_score, "state": self.state}

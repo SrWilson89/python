@@ -1,16 +1,16 @@
 ========================================
             ERROR EN EL PROGRAMA
 ========================================
-Hora del error: Thu Aug 14 23:55:49 2025
-Tipo de error: TypeError
-Mensaje: IAA.move() missing 3 required positional arguments: 'ball_x', 'ball_speed_x', and 'ball_speed_y'
+Hora del error: Fri Aug 15 00:06:26 2025
+Tipo de error: error
+Mensaje: font not initialized
 
 --- Traceback ---
 Traceback (most recent call last):
-  File "C:\Users\Wilson\.vscode\ai\run_game.py", line 573, in <module>
+  File "C:\Users\Wilson\.vscode\ai\run_game.py", line 708, in <module>
     start_diablo_mode(ia_players)
     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
-  File "C:\Users\Wilson\.vscode\ai\run_game.py", line 508, in start_diablo_mode
+  File "C:\Users\Wilson\.vscode\ai\run_game.py", line 643, in start_diablo_mode
     winner, _, _ = start_game(player1, player2, player1_name, player2_name,
                    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                               time_limit=current_time_limit, consecutive_score_limit=1, point_score_limit=1,
@@ -19,7 +19,6 @@ Traceback (most recent call last):
                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                               ball_speed=current_ball_speed)
                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Wilson\.vscode\ai\run_game.py", line 124, in start_game
-    player1_y += player1.move(balls[0]['y'], player1_y)
-                 ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: IAA.move() missing 3 required positional arguments: 'ball_x', 'ball_speed_x', and 'ball_speed_y'
+  File "C:\Users\Wilson\.vscode\ai\run_game.py", line 139, in start_game
+    font = pygame.font.Font(None, 74)
+pygame.error: font not initialized

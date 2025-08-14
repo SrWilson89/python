@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Ejecutar run_game.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/run_game.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

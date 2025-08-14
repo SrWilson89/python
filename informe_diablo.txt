@@ -3,59 +3,69 @@
 ========================================
 
 Partida finalizada en la ronda: 3
-Tiempo total de juego: 04:14 minutos
-Ganador del torneo: IAF
+Tiempo total de juego: 05:41 minutos
+Ganador del torneo: IAJ
 
 --- Resultados por victorias ---
-> IAF: 10 victorias
-> IAJ: 9 victorias
-> IAL: 7 victorias
-> IAR: 7 victorias
-> IAD: 4 victorias
-> IAM: 3 victorias
+> IAJ: 10 victorias
+> IAA: 8 victorias
+> IAF: 5 victorias
+> IAM: 5 victorias
+> IAR: 5 victorias
+> IAD: 2 victorias
 > IAC: 2 victorias
-> IAA: 1 victorias
+> IAL: 0 victorias
 
 --- Resultados por puntos ---
-> IAF: 32 puntos
-> IAJ: 27 puntos
-> IAR: 23 puntos
-> IAL: 21 puntos
-> IAD: 14 puntos
-> IAM: 9 puntos
+> IAJ: 30 puntos
+> IAA: 27 puntos
+> IAR: 19 puntos
+> IAM: 18 puntos
+> IAF: 15 puntos
+> IAD: 6 puntos
 > IAC: 6 puntos
-> IAA: 3 puntos
+> IAL: 2 puntos
 
 --- Progreso de IQ de las IA ---
 > IA: IAD
-  - IQ Inicial del torneo: 690.00
-  - IQ Final del torneo: 1040.00
+  - IQ Inicial del torneo: 22.54
+  - IQ Final del torneo: 5.34
 
 > IA: IAA
-  - IQ Inicial del torneo: -511.00
-  - IQ Final del torneo: -653.00
+  - IQ Inicial del torneo: 116.54
+  - IQ Final del torneo: 167.25
 
 > IA: IAJ
-  - IQ Inicial del torneo: 1458.00
-  - IQ Final del torneo: 2202.00
+  - IQ Inicial del torneo: 1120.34
+  - IQ Final del torneo: 1313.34
 
 > IA: IAF
-  - IQ Inicial del torneo: 3008.00
-  - IQ Final del torneo: 4224.00
+  - IQ Inicial del torneo: 137.42
+  - IQ Final del torneo: 140.23
 
 > IA: IAC
-  - IQ Inicial del torneo: -90.00
-  - IQ Final del torneo: -280.00
+  - IQ Inicial del torneo: -29.47
+  - IQ Final del torneo: -52.32
 
 > IA: IAL
-  - IQ Inicial del torneo: 45.00
-  - IQ Final del torneo: 205.00
+  - IQ Inicial del torneo: 38.82
+  - IQ Final del torneo: 10.87
 
 > IA: IAM
-  - IQ Inicial del torneo: 130.00
-  - IQ Final del torneo: 573.00
+  - IQ Inicial del torneo: 87.14
+  - IQ Final del torneo: 94.08
 
 > IA: IAR
-  - IQ Inicial del torneo: 305.00
-  - IQ Final del torneo: 555.00
+  - IQ Inicial del torneo: 343.18
+  - IQ Final del torneo: 406.55
+
+--- Sentimiento final de las IA ---
+> IAD: diversion
+> IAA: concentracion
+> IAJ: determinacion
+> IAF: fluidez
+> IAC: calma
+> IAL: analisis continuo
+> IAM: fluidez constante
+> IAR: impulsividad
 
