@@ -21,7 +21,7 @@ except gym.error.AlreadyRegistered:
 # 2. Configuración del entrenamiento
 env_id = "Roulette-v1"
 
-# --- RUTA ÚNICA PARA LOS ARCHIVOS DE LOG ---
+# --- RUTA ÚNICA PARA LOS ARCHIVOS DE LOGS ---
 log_dir = "./roulette_logs/"
 os.makedirs(log_dir, exist_ok=True)
 # ---------------------------------------------
@@ -31,10 +31,10 @@ timestamp = time.strftime('%Y-%m-%d_%H-%M-%S')
 total_timesteps = 10000
 block_size = 1000
 
-# Archivos únicos por cada ejecución
-balance_plot_file = f"{log_dir}balance_plot_{timestamp}.png"
-resumen_texto_file = f"{log_dir}roulette_resumen_{timestamp}.txt"
-modelo_file = f"./roulette_model/roulette_ppo_model_{timestamp}"
+# --- MODELO PERSISTENTE COMPARTIDO ---
+model_path = "./roulette_model/pelayo.zip"
+os.makedirs(os.path.dirname(model_path), exist_ok=True)
+# ------------------------------------
 
 # Archivos maestros (se adjuntan los datos)
 historial_completo_csv = f"{log_dir}roulette_historial_completo.csv"
@@ -42,13 +42,21 @@ informe_maestro_html = f"{log_dir}roulette_informe_maestro.html"
 
 # 3. Crear el entorno y el modelo PPO
 env = gym.make(env_id, initial_balance=100000)
-model = PPO(
-    "MlpPolicy",
-    env,
-    verbose=0,
-    learning_rate=0.001,
-    gamma=0.95
-)
+
+# --- NUEVA LÓGICA: CARGAR O CREAR MODELO ---
+if os.path.exists(model_path):
+    print(f"Cargando modelo pre-existente 'pelayo.zip'...")
+    model = PPO.load(model_path, env=env)
+else:
+    print("Creando nuevo modelo de IA 'pelayo.zip'...")
+    model = PPO(
+        "MlpPolicy",
+        env,
+        verbose=0,
+        learning_rate=0.001,
+        gamma=0.95
+    )
+# --------------------------------------------
 
 # 4. Entrenar el agente y guardar el historial de jugadas
 print(f"Iniciando el entrenamiento de la IA para la ruleta con {total_timesteps} jugadas...")
@@ -100,8 +108,10 @@ minutes, seconds = divmod(remainder, 60)
 print("\n¡Entrenamiento completado!")
 print(f"Tiempo total de ejecución: {int(hours)}h {int(minutes)}m {int(seconds)}s.")
 
-# Guardamos el modelo con la marca de tiempo para no sobrescribir
-model.save(modelo_file)
+# --- GUARDAR MODELO ACTUALIZADO EN PELAYO.ZIP ---
+model.save(model_path)
+print(f"Modelo de IA actualizado y guardado en: {model_path}")
+# ----------------------------------
 
 current_time_str = time.strftime('%Y-%m-%d %H:%M:%S')
 winning_numbers = [item['roulette_result'] for item in roulette_history_session]
@@ -112,7 +122,7 @@ df_history_session.to_csv(historial_completo_csv, mode='a', header=not os.path.e
 print(f"Historial de jugadas guardado en: {historial_completo_csv}")
 
 # --- CREAR RESUMEN DE TEXTO ---
-with open(resumen_texto_file, "w", encoding="utf-8") as f:
+with open(f"{log_dir}roulette_resumen_{timestamp}.txt", "w", encoding="utf-8") as f:
     f.write("--- RESUMEN DEL ENTRENAMIENTO ---\n\n")
     f.write(f"Timestamp: {timestamp}\n")
     f.write(f"Jugadas totales: {total_timesteps}\n")
@@ -177,7 +187,7 @@ with open(resumen_texto_file, "w", encoding="utf-8") as f:
         top_column = column_counts.most_common(1)[0]
         percentage = (top_column[1] / len(winning_numbers)) * 100
         f.write(f"Columna más frecuente: {top_column[0]} con {top_column[1]} veces ({percentage:.2f}%)\n")
-    
+
 # --- Generar el gráfico y el informe HTML ---
 try:
     # 1. Crear el gráfico de progreso del saldo
@@ -197,7 +207,7 @@ try:
     plt.close()
 
     # 2. Leer el resumen de texto
-    with open(resumen_texto_file, "r", encoding="utf-8") as f:
+    with open(f"{log_dir}roulette_resumen_{timestamp}.txt", "r", encoding="utf-8") as f:
         resumen_texto = f.read()
 
     # 3. Crear el bloque HTML del informe
@@ -211,7 +221,6 @@ try:
 
     # 4. Adjuntar al informe maestro HTML
     if not os.path.exists(informe_maestro_html):
-        # Si el archivo no existe, creamos la estructura completa
         html_content = f"""
         <!DOCTYPE html>
         <html lang="es">
@@ -238,10 +247,8 @@ try:
         with open(informe_maestro_html, "w", encoding="utf-8") as f:
             f.write(html_content)
     else:
-        # Si ya existe, insertamos el nuevo bloque antes de la etiqueta </div>
         with open(informe_maestro_html, "r+", encoding="utf-8") as f:
             content = f.read()
-            # Encontramos el final del contenedor y añadimos el nuevo bloque justo antes
             pos = content.rfind('</div>')
             if pos != -1:
                 content = content[:pos] + html_block + content[pos:]

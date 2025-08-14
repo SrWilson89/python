@@ -1,0 +1,18 @@
+[
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 98.75,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "frustraci\u00f3n y sed de venganza",
+            "puntuacion_final": -1
+        }
+    }
+]

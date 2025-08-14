@@ -1,0 +1,18 @@
+[
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 0,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 0
+        }
+    },
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 0,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 0
+        }
+    }
+]

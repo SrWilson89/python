@@ -1,0 +1,66 @@
+[
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 9.23,
+            "diversion_juego": 0.77,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "frustraci\u00f3n y sed de venganza",
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 9.61,
+            "diversion_juego": 0.39,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "frustraci\u00f3n y sed de venganza",
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 9.736666666666666,
+            "diversion_juego": 0.2633333333333333,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "frustraci\u00f3n y sed de venganza",
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 9.61,
+            "diversion_juego": 0.39,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "frustraci\u00f3n y sed de venganza",
+            "puntuacion_final": -1
+        }
+    }
+]

@@ -1,0 +1,82 @@
+[
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 96.25,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 6.25,
+            "diversion_juego": 3.75,
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 96.98,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 6.98,
+            "diversion_juego": 3.02,
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 97.22333333333333,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 7.223333333333333,
+            "diversion_juego": 2.776666666666667,
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 97.345,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 7.345000000000001,
+            "diversion_juego": 2.655,
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iad",
+        "game_data": {
+            "dificultad_rival": 97.418,
+            "efectividad_ganadora": 0,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 7.418,
+            "diversion_juego": 2.582,
+            "puntuacion_final": -1
+        }
+    }
+]

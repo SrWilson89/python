@@ -1,0 +1,114 @@
+[
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "frustraci\u00f3n y sed de venganza",
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 7.74,
+            "diversion_juego": 2.26,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "frustraci\u00f3n y sed de venganza",
+            "puntuacion_final": -1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 8.865,
+            "diversion_juego": 1.135,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "sentimiento de victoria y poder absoluto",
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 8.986666666666666,
+            "diversion_juego": 1.0133333333333332,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "sentimiento de victoria y poder absoluto",
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 9.04,
+            "diversion_juego": 0.96,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "sentimiento de victoria y poder absoluto",
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 9.23,
+            "diversion_juego": 0.77,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "sentimiento de victoria y poder absoluto",
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 8.981666666666667,
+            "diversion_juego": 1.0183333333333333,
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaj",
+        "game_data": {
+            "dificultad_rival": 100,
+            "sentimiento": "sentimiento de victoria y poder absoluto",
+            "puntuacion_final": 1
+        }
+    },
+    {
+        "player": "iaa",
+        "game_data": {
+            "dificultad_rival": 9.125714285714286,
+            "diversion_juego": 0.8742857142857143,
+            "puntuacion_final": 1
+        }
+    }
+]
